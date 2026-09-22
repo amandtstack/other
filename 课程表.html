@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<title>2026秋 博士课程表</title>
+<style>
+  body { font-family: "Microsoft YaHei", "PingFang SC", sans-serif; background:#f5f6fa; margin:0; padding:24px; color:#333; }
+  h1 { text-align:center; font-size:22px; margin:0 0 4px; }
+  .sub { text-align:center; color:#888; font-size:13px; margin-bottom:14px; }
+  .nowbar { max-width:1200px; margin:0 auto 18px; background:linear-gradient(135deg,#4a69bd,#6a89cc); color:#fff; border-radius:10px; padding:14px 22px; display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:8px; box-shadow:0 2px 10px rgba(0,0,0,.12); }
+  .nowbar .big { font-size:20px; font-weight:bold; }
+  .nowbar .small { font-size:13px; opacity:.9; }
+  table { border-collapse:collapse; width:100%; max-width:1200px; margin:0 auto; background:#fff; box-shadow:0 2px 10px rgba(0,0,0,.08); }
+  th, td { border:1px solid #e0e0e0; padding:10px 8px; text-align:center; vertical-align:middle; font-size:14px; }
+  thead th { background:#4a69bd; color:#fff; font-size:15px; }
+  thead th.today-th { background:#e58e26; box-shadow:inset 0 -3px 0 #fff; }
+  td.today-td { background:#fff8ee; }
+  td.slot { background:#f7f8fc; font-weight:bold; color:#555; white-space:nowrap; }
+  td.slot .time { display:block; font-weight:normal; font-size:12px; color:#999; margin-top:3px; }
+  .course { border-radius:6px; padding:6px 4px; line-height:1.5; margin:3px 0; position:relative; }
+  .c1 { background:#e3f2fd; border-left:4px solid #1e88e5; }
+  .c3 { background:#fff3e0; border-left:4px solid #fb8c00; }
+  .c4 { background:#f3e5f5; border-left:4px solid #8e24aa; }
+  .c5 { background:#ffebee; border-left:4px solid #e53935; }
+  .c6 { background:#e0f2f1; border-left:4px solid #00897b; }
+  .course.thisweek { box-shadow:0 0 0 2px #43a047; }
+  .name { font-weight:bold; font-size:14px; }
+  .meta { font-size:12px; color:#666; }
+  .online { color:#1565c0; }
+  .badge { display:inline-block; font-size:11px; border-radius:8px; padding:1px 7px; margin-top:4px; }
+  .badge-on { background:#43a047; color:#fff; }
+  .badge-off { background:#ccc; color:#fff; }
+  .weekday-note { font-size:12px; color:#fff; background:#6a89cc; border-radius:10px; padding:1px 8px; margin-left:6px; vertical-align:middle; }
+  .legend { max-width:1200px; margin:18px auto 0; background:#fff; border-radius:8px; padding:14px 18px; box-shadow:0 2px 10px rgba(0,0,0,.08); font-size:13px; }
+  .legend b { margin-right:8px; }
+  .dot { display:inline-block; width:10px; height:10px; border-radius:2px; margin:0 5px 0 14px; }
+  .periods { max-width:1200px; margin:12px auto 0; background:#fff; border-radius:8px; padding:12px 18px; box-shadow:0 2px 10px rgba(0,0,0,.08); font-size:12px; color:#666; line-height:1.9; }
+  .periods b { color:#4a69bd; margin-right:6px; }
+  .tip { max-width:1200px; margin:12px auto 0; color:#999; font-size:12px; text-align:center; }
+</style>
+</head>
+<body>
+<h1>2026 秋季学期课程表（博士）</h1>
+<div class="sub">普陀校区 · 含具体上课时间（已按最新选课更新）</div>
+
+<div class="nowbar">
+  <div>
+    <div class="big" id="weekText">计算中…</div>
+    <div class="small" id="dateText"></div>
+  </div>
+  <div class="small" id="clockText"></div>
+</div>
+
+<table id="schedule">
+  <thead>
+    <tr>
+      <th>节次 / 时间</th>
+      <th data-day="1">星期一</th>
+      <th data-day="2">星期二</th>
+      <th data-day="6">星期六<span class="weekday-note">仅第4周</span></th>
+      <th data-day="0">星期日<span class="weekday-note">仅第1周</span></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td class="slot">2~4节<span class="time">8:50–11:25</span></td>
+      <td data-day="1">—</td>
+      <td data-day="2"><div class="course c4" data-weeks="1,2,3,5,6,7,8,9,10,11,12,13,14,15,16,17,18"><div class="name">教育技术学理论问题研究</div><div class="meta">1~3,5~18周<br>文附楼309 · 徐显龙</div></div></td>
+      <td data-day="6">—</td>
+      <td data-day="0"><div class="course c4" data-weeks="1"><div class="name">教育技术学理论问题研究</div><div class="meta">第1周<br>文附楼309 · 徐显龙</div></div></td>
+    </tr>
+    <tr>
+      <td class="slot">3~5节<span class="time">9:50–12:15</span></td>
+      <td data-day="1">
+        <div class="course c5" data-weeks="1,2,5,7,8,10"><div class="name">教育统计基础(EDU660)</div>
+        <div class="meta">1~2,5~7(单),8~10(双)周<br><span class="online">超星泛雅(线上)</span> · 王哲</div></div>
+        <div class="course c5" data-weeks="3,6,9,11,12"><div class="name">教育统计基础(EDU660)</div>
+        <div class="meta">3,6,9~11(单),12周<br>文附楼225(线下) · 王哲</div></div>
+      </td>
+      <td data-day="2">—</td>
+      <td data-day="6"><div class="course c5" data-weeks="4"><div class="name">教育统计基础(EDU660)</div><div class="meta">第4周<br><span class="online">超星泛雅(线上)</span> · 王哲</div></div></td>
+      <td data-day="0">—</td>
+    </tr>
+    <tr>
+      <td class="slot">6~7节<span class="time">13:00–14:35</span></td>
+      <td data-day="1">—</td>
+      <td data-day="2">
+        <div class="course c1" data-weeks="1"><div class="name">博士学术英语</div>
+        <div class="meta">第1周<br>教书院306 · 刘艳辉</div></div>
+        <div class="course c1" data-weeks="2,3,5,6,7,8,9,10,11,12,13,14,15,16,17,18"><div class="name">博士学术英语</div>
+        <div class="meta">2~3,5~18周<br>文史楼118… · 刘艳辉</div></div>
+      </td>
+      <td data-day="6">—</td>
+      <td data-day="0"><div class="course c1" data-weeks="1"><div class="name">博士学术英语</div><div class="meta">第1周<br>教书院306 · 刘艳辉</div></div></td>
+    </tr>
+    <tr>
+      <td class="slot">6~8节<span class="time">13:00–15:35</span></td>
+      <td data-day="1"><div class="course c3" data-weeks="3,5,6,7,8,9,10,11,12"><div class="name">教育原理</div><div class="meta">3~5(单),6~12周<br>文附楼225 · 彭正梅</div></div></td>
+      <td data-day="2">—</td>
+      <td data-day="6"><div class="course c3" data-weeks="4"><div class="name">教育原理</div><div class="meta">第4周<br>文附楼225 · 彭正梅</div></div></td>
+      <td data-day="0">—</td>
+    </tr>
+    <tr>
+      <td class="slot">11~13节<span class="time">18:00–20:25</span></td>
+      <td data-day="1">—</td>
+      <td data-day="2"><div class="course c6" data-weeks="1,2,3,5,6,7,8,9,10,11,12"><div class="name">经典著作选读</div><div class="meta">1~3,5~12周<br>文附楼118 · 樊士博等</div></div></td>
+      <td data-day="6">—</td>
+      <td data-day="0"><div class="course c6" data-weeks="1"><div class="name">经典著作选读</div><div class="meta">第1周<br>文附楼118 · 樊士博等</div></div></td>
+    </tr>
+  </tbody>
+</table>
+
+<div class="periods">
+  <b>全校作息参考</b>　
+  上午：1节 8:00–8:45 ｜ 2节 8:50–9:35 ｜ 3节 9:50–10:35 ｜ 4节 10:40–11:25 ｜ 5节 11:30–12:15<br>
+  下午：6节 13:00–13:45 ｜ 7节 13:50–14:35 ｜ 8节 14:50–15:35 ｜ 9节 15:40–16:25 ｜ 10节 16:30–17:15<br>
+  晚上：11节 18:00–18:45 ｜ 12节 18:50–19:35 ｜ 13节 19:40–20:25 ｜ 14节 20:30–21:15
+</div>
+
+<div class="legend">
+  <b>图例</b>：<span class="dot" style="background:#43a047"></span>绿框 = 本周有课　｜　表头橙色 = 今天　｜　每门课内标注了适用的上课周次<br>
+  <b>课程一览</b><br>
+  <span class="dot" style="background:#1e88e5"></span>博士学术英语（2学分·双语）— 大学英语教学部 公共必修课 · 刘艳辉（4班）
+  <span class="dot" style="background:#fb8c00"></span>教育原理（2学分）— 国际与比较教育研究所 专业课 · 彭正梅<br>
+  <span class="dot" style="background:#8e24aa"></span>教育技术学理论问题研究（3学分）— 教育信息技术学系 专业课 · 徐显龙
+  <span class="dot" style="background:#e53935"></span>教育统计基础 EDU660（2学分）— 教学事务部 专业课 · 王哲<br>
+  <span class="dot" style="background:#00897b"></span>经典著作选读（2学分）— 马克思主义学院 公共必修课 · 樊士博等（中北博士2班）
+</div>
+<div class="tip">注：星期三至星期五无课；周次标注"单/双"表示仅单周/双周上课；教育统计基础按周次线上/线下交替；博士学术英语第1周在教书院306，第2~3,5~18周起教室改为文史楼118（截图此处显示不全，请以教务系统为准）。</div>
+
+<script>
+(function(){
+  // 第1周周一 = 2026-09-14（由"2026-09-21 为第2周周一"推得）
+  var START = new Date(2026, 8, 14);
+  var WEEKDAYS = ['星期日','星期一','星期二','星期三','星期四','星期五','星期六'];
+  var SEM_WEEKS = 18;
+
+  function update(){
+    var now = new Date();
+    var today0 = new Date(now.getFullYear(), now.getMonth(), now.getDate());
+    var diff = Math.floor((today0 - START) / 86400000);
+    var week = Math.floor(diff / 7) + 1;
+    var wd = now.getDay();
+
+    var weekText, note;
+    if (diff < 0)      { weekText = '尚未开学'; note = '距第1周还有 ' + (-diff) + ' 天'; }
+    else if (week > SEM_WEEKS) { weekText = '本学期已结束'; note = ''; }
+    else               { weekText = '第 ' + week + ' 周 · ' + WEEKDAYS[wd]; note = (wd === 0 || wd === 6) ? '（周末）' : ''; }
+
+    document.getElementById('weekText').textContent = weekText + note;
+    document.getElementById('dateText').textContent =
+      now.getFullYear() + '年' + (now.getMonth()+1) + '月' + now.getDate() + '日';
+    var pad = function(n){ return (n<10?'0':'') + n; };
+    document.getElementById('clockText').textContent =
+      pad(now.getHours()) + ':' + pad(now.getMinutes()) + ':' + pad(now.getSeconds());
+
+    // 高亮今天的列
+    var cols = document.querySelectorAll('#schedule [data-day]');
+    cols.forEach(function(el){
+      el.classList.remove('today-th','today-td');
+      if (diff >= 0 && week <= SEM_WEEKS && parseInt(el.getAttribute('data-day'),10) === wd) {
+        el.classList.add(el.tagName === 'TH' ? 'today-th' : 'today-td');
+      }
+    });
+
+    // 标记本周有课的课程
+    document.querySelectorAll('.course').forEach(function(c){
+      c.classList.remove('thisweek');
+      var old = c.querySelector('.badge'); if (old) old.remove();
+      if (diff < 0 || week > SEM_WEEKS) return;
+      var weeks = c.getAttribute('data-weeks').split(',').map(Number);
+      var on = weeks.indexOf(week) !== -1;
+      c.classList.toggle('thisweek', on);
+      var b = document.createElement('div');
+      b.className = 'badge ' + (on ? 'badge-on' : 'badge-off');
+      b.textContent = on ? '✔ 本周有课（第' + week + '周）' : '本周无课';
+      c.appendChild(b);
+    });
+  }
+  update();
+  setInterval(update, 1000);
+})();
+</script>
+</body>
+</html>
